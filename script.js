@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Create and store audio elements for each button upfront
     const audioElements = {};
     let currentlyPlayingAudio = null;
+    let currentlyPlayingButton = null;
     
     audioButtons.forEach(button => {
         if (!button) {
@@ -32,6 +33,10 @@ document.addEventListener('DOMContentLoaded', function() {
         audioElements[audioPath].addEventListener('ended', function() {
             if (currentlyPlayingAudio === audioElements[audioPath]) {
                 currentlyPlayingAudio = null;
+                if (currentlyPlayingButton) {
+                    currentlyPlayingButton.classList.remove('playing');
+                    currentlyPlayingButton = null;
+                }
             }
         });
         
@@ -44,20 +49,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 audio.pause();
                 audio.currentTime = 0; // Reset to beginning
                 currentlyPlayingAudio = null;
+                if (currentlyPlayingButton) {
+                    currentlyPlayingButton.classList.remove('playing');
+                    currentlyPlayingButton = null;
+                }
                 return;
             }
             
-            // Stop any currently playing audio
+            // Stop any currently playing audio and remove playing class
             if (currentlyPlayingAudio && currentlyPlayingAudio !== audio) {
                 currentlyPlayingAudio.pause();
                 currentlyPlayingAudio.currentTime = 0; // Reset to beginning
             }
+            if (currentlyPlayingButton) {
+                currentlyPlayingButton.classList.remove('playing');
+            }
             
-            // Play the new audio
+            // Play the new audio and add playing class
             audio.play().catch(error => {
                 console.error('Error playing audio:', error);
             });
             currentlyPlayingAudio = audio;
+            currentlyPlayingButton = button;
+            button.classList.add('playing');
         });
     });
 });
