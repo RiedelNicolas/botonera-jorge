@@ -44,15 +44,13 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             const audio = audioElements[audioPath];
             
-            // If this is the currently playing audio, pause it
+            // If this is the currently playing audio, restart it from the beginning
             if (currentlyPlayingAudio === audio && !audio.paused) {
                 audio.pause();
                 audio.currentTime = 0; // Reset to beginning
-                currentlyPlayingAudio = null;
-                if (currentlyPlayingButton) {
-                    currentlyPlayingButton.classList.remove('playing');
-                    currentlyPlayingButton = null;
-                }
+                audio.play().catch(error => {
+                    console.error('Error playing audio:', error);
+                });
                 return;
             }
             
