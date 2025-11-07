@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Create and store audio elements for each button upfront
     const audioElements = {};
+    let currentlyPlayingAudio = null;
     
     audioButtons.forEach(button => {
         if (!button) {
@@ -27,19 +28,36 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create audio element and start preloading
         audioElements[audioPath] = new Audio(audioPath);
         
+        // Reset currentlyPlayingAudio when audio ends naturally
+        audioElements[audioPath].addEventListener('ended', function() {
+            if (currentlyPlayingAudio === audioElements[audioPath]) {
+                currentlyPlayingAudio = null;
+            }
+        });
+        
         // Add click event listener
         button.addEventListener('click', function() {
             const audio = audioElements[audioPath];
             
-            // Toggle play/pause
-            if (audio.paused) {
-                audio.play().catch(error => {
-                    console.error('Error playing audio:', error);
-                });
-            } else {
+            // If this is the currently playing audio, pause it
+            if (currentlyPlayingAudio === audio && !audio.paused) {
                 audio.pause();
                 audio.currentTime = 0; // Reset to beginning
+                currentlyPlayingAudio = null;
+                return;
             }
+            
+            // Stop any currently playing audio
+            if (currentlyPlayingAudio && currentlyPlayingAudio !== audio) {
+                currentlyPlayingAudio.pause();
+                currentlyPlayingAudio.currentTime = 0; // Reset to beginning
+            }
+            
+            // Play the new audio
+            audio.play().catch(error => {
+                console.error('Error playing audio:', error);
+            });
+            currentlyPlayingAudio = audio;
         });
     });
 });
