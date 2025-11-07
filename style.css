@@ -1,4 +1,6 @@
 body {
+    background-image: url('assets/img/background.jpg');
+    background-repeat: repeat;
     background-color: #1f2937;
     min-height: 100vh;
     display: flex;
@@ -9,19 +11,33 @@ body {
     overflow-y: auto;
 }
 
+.card {
+    background: rgba(240, 240, 240, 0.85);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+}
+
 .button-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    max-width: 1200px;
+    gap: 15px;
     width: 100%;
-    padding: 20px;
 }
 
-/* Desktop: 3 columns */
+/* Desktop: smaller buttons, 2 columns */
 @media (min-width: 768px) {
     .button-container {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .audio-button {
+        font-size: 1rem;
+        padding: 1rem 2rem;
+        min-height: 60px;
     }
 }
 
@@ -29,14 +45,14 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     font-weight: bold;
-    font-size: 1.2rem;
-    padding: 1.5rem 3rem;
+    font-size: 1.1rem;
+    padding: 1.2rem 2.5rem;
     border-radius: 9999px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     border: none;
     transition: transform 0.2s ease;
-    min-height: 80px;
+    min-height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
