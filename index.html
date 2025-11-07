@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audio Button Page</title>
-    <base href="/botonera-jorge/">
+    <script>
+        // Only add base tag on GitHub Pages (not in local development)
+        if (window.location.hostname.endsWith('.github.io')) {
+            const base = document.createElement('base');
+            base.href = '/botonera-jorge/';
+            document.head.appendChild(base);
+        }
+    </script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
