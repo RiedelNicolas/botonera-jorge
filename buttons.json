@@ -1,0 +1,24 @@
+{
+  "buttons": [
+    {
+      "title": "Ordinario",
+      "ref": "assets/audios/jorge-ordinario-clip.mp3"
+    },
+    {
+      "title": "Gorila",
+      "ref": "assets/audios/gorila.mp3"
+    },
+    {
+      "title": "Compañero",
+      "ref": "assets/audios/compañero-jorge.mp3"
+    },
+    {
+      "title": "Trompeta",
+      "ref": "assets/audios/louis-armstrong.mp3"
+    },
+    {
+      "title": "3 vs Honrada",
+      "ref": "assets/audios/3_honrada.mp3"
+    }
+  ]
+}

@@ -1,28 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Audio Button Page</title>
     <script>
-        // Only add base tag on GitHub Pages (not in local development)
-        if (window.location.hostname.endsWith('.github.io')) {
-            const base = document.createElement('base');
-            base.href = '/botonera-jorge/';
-            document.head.appendChild(base);
-        }
+      if (window.location.hostname.endsWith(".github.io")) {
+        const base = document.createElement("base");
+        base.href = "/botonera-jorge/";
+        document.head.appendChild(base);
+      }
     </script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="card">
-        <div class="button-container">
-            <button class="audio-button" data-audio="assets/audios/jorge-ordinario-clip.mp3">Ordinario</button>
-            <button class="audio-button" data-audio="assets/audios/gorila.mp3">Gorila</button>
-            <button class="audio-button" data-audio="assets/audios/compañero-jorge.mp3">Compañero</button>
-            <button class="audio-button" data-audio="assets/audios/louis-armstrong.mp3">Trompeta</button>
-        </div>
+      <div class="button-container">
+        <!-- Buttons will be dynamically loaded from buttons.json -->
+      </div>
     </div>
-</body>
+  </body>
 </html>
